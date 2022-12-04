@@ -26,7 +26,7 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
 
   @override
   Future<Either<Failure, NumberTrivia>> getConcreteNumberTrivia(int number) =>
-      _getTrivia(() => remoteDataSource.getRandomNumberTrivia());
+      _getTrivia(() => remoteDataSource.getConcreteNumberTrivia(number));
 
   @override
   Future<Either<Failure, NumberTrivia>> getRandomNumberTrivia() =>

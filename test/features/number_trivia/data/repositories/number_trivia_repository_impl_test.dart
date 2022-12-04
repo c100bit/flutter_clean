@@ -21,7 +21,7 @@ void main() {
   final mockLocalDataSource = MockLocalDataSource();
   final mockRemoteDataSource = MockRemoteDataSource();
   final mockNetworkInfo = MockNetworkInfo();
-
+  registerFallbackValue(const NumberTriviaModel(text: 'text', number: 1));
   final repository = NumberTriviaRepositoryImpl(
       remoteDataSource: mockRemoteDataSource,
       localDataSource: mockLocalDataSource,
@@ -49,6 +49,11 @@ void main() {
     const tNumber = 1;
     const tNumberTriviaModel = NumberTriviaModel(number: tNumber, text: 'Test');
     const NumberTrivia tNumberTrivia = tNumberTriviaModel;
+
+    setUp(() {
+      when(() => mockLocalDataSource.cacheNumberTrivia(any()))
+          .thenAnswer((_) async => () {});
+    });
 
     test('should check if the device is online', () {
       when(() => mockRemoteDataSource.getConcreteNumberTrivia(any()))

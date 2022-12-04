@@ -39,8 +39,9 @@ void main() {
     const tNumberTriviaModel = NumberTriviaModel(number: 1, text: 'Test');
 
     test('should call  SharedPreferenses to cache data', (() async {
-      when(() => mockSharedPreferences.getString(any()))
-          .thenReturn(fixture('trivia_cached.json'));
+      when(() => mockSharedPreferences.setString(any(), any()))
+          .thenAnswer((_) async => true);
+
       await dataSource.cacheNumberTrivia(tNumberTriviaModel);
       final value = json.encode(tNumberTriviaModel.toJson());
       verify(() => mockSharedPreferences.setString(cachedNumberTrivia, value));
