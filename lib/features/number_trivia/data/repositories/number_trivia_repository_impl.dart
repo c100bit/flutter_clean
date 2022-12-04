@@ -7,7 +7,7 @@ import 'package:flutter_clean/features/number_trivia/data/models/number_trivia_m
 import 'package:flutter_clean/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:flutter_clean/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 
-import '../../../../core/platform/network_info.dart';
+import '../../../../core/network/network_info.dart';
 import '../datasources/number_trivia_local_data_source.dart';
 import '../datasources/number_trivia_remote_data_source.dart';
 
